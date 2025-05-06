@@ -25,14 +25,16 @@ public class LabWork implements Comparable<LabWork> {
         this.creationDate = new Date();
     }
 
-    public void ShowLabWork(LabWork labWork) {
-        System.out.println("Name: " + labWork.getName());
-        System.out.println("ID: " + labWork.getId());
-        System.out.println("Coordinates: " + labWork.getCoordinates().getX() + " " + labWork.getCoordinates().getY());
-        System.out.println("CreationDate: " + labWork.getCreationDate());
-        System.out.println("MinimalPoint: " + labWork.getMinimalPoint());
-        System.out.println("Difficulty: " + labWork.getDifficulty());
-        System.out.println("Author: " + labWork.getAuthor().getName() + "\n   eyes: " + labWork.getAuthor().getEyeColor() + "\n   hair: " + labWork.getAuthor().getHairColor() + "\n   location: " + labWork.getAuthor().getLocation().getName() + "\n   coordinates: " + labWork.getAuthor().getLocation().getX() + " " + labWork.getAuthor().getLocation().getY() + " " + labWork.getAuthor().getLocation().getZ() + " " + "\n   nationality: " + labWork.getAuthor().getNationality() + "\n   weight: " + labWork.getAuthor().getWeight());
+    public String ShowLabWork(LabWork labWork) {
+        StringBuilder text = new StringBuilder();
+        text.append("Name: " + labWork.getName());
+        text.append("ID: " + labWork.getId());
+        text.append("Coordinates: " + labWork.getCoordinates().getX() + " " + labWork.getCoordinates().getY());
+        text.append("CreationDate: " + labWork.getCreationDate());
+        text.append("MinimalPoint: " + labWork.getMinimalPoint());
+        text.append("Difficulty: " + labWork.getDifficulty());
+        text.append("Author: " + labWork.getAuthor().getName() + "\n   eyes: " + labWork.getAuthor().getEyeColor() + "\n   hair: " + labWork.getAuthor().getHairColor() + "\n   location: " + labWork.getAuthor().getLocation().getName() + "\n   coordinates: " + labWork.getAuthor().getLocation().getX() + " " + labWork.getAuthor().getLocation().getY() + " " + labWork.getAuthor().getLocation().getZ() + " " + "\n   nationality: " + labWork.getAuthor().getNationality() + "\n   weight: " + labWork.getAuthor().getWeight());
+        return text.toString();
     }
 
     public long getId() {

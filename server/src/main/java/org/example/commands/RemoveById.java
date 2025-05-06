@@ -10,21 +10,9 @@ public class RemoveById extends Command {
     public RemoveById() {
         super("remove_by_id");
     }
-
+    @Override
     public String execute(Request request) throws IllegalAccessException {
-        Scanner in = new Scanner(System.in);
-        long id;
-        while (true) {
-            System.out.println("Введите ID: ");
-            try {
-                String input = in.nextLine();
-                id = Long.parseLong(input);
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число long");
-            }
-        }
-        removeByID(id);
+        removeByID(Long.parseLong(request.getArgs()[0]));
         return "Выполнено успешно";
     }
 

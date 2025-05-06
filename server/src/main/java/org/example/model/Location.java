@@ -6,11 +6,11 @@ public class Location {
     private Float z; //Поле не может быть null
     private String name; //Поле не может быть null
 
-    /*public Location(Integer y, Float z, String name) {
+    public Location(Integer y, Float z, String name) {
         this.y = y;
         this.z = z;
         this.name = name;
-    }*/
+    }
 
     public long getX() {
         return x;

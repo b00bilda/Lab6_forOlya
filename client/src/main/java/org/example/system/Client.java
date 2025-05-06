@@ -2,6 +2,7 @@ package org.example.system;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.example.commands.Command;
 import org.example.model.LabWork;
 
 import java.io.*;
@@ -16,7 +17,7 @@ public class Client {
     BufferedReader reader;
     static BufferedWriter writer;
 
-    public void start() {
+    public void start(CommandManager commandManager) {
         Scanner scanner = new Scanner(System.in);
         Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).create();
         LabWork labWork = null;
@@ -25,22 +26,21 @@ public class Client {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             String[] commandLine = line.split(" ");
-            String command = commandLine[0];
-            String[] arguments = Arrays.copyOfRange(commandLine, 1, commandLine.length);
-            switch (command) {
-                case "add":
-                    Add add = new Add();
-                    try {
-                        labWork = new LabWork(add.execute());
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                default:
-                    labWork = new LabWork();
+            String commandName = commandLine[0];
+            // String[] arguments = Arrays.copyOfRange(commandLine, 1, commandLine.length);
+            Command command = commandManager.getCommandList().get(commandName);
+            Request request = null;
+
+            if (!command.isNeedArguments()) {
+                request = new Request(commandName, labWork, null);
+            } else {
+                try {
+                    command.execute(request);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
             }
 
-            Request request = new Request(command, labWork, arguments);
             String jsonRequest = gson.toJson(request);
             try {
                 client = new Socket("localhost",8080);

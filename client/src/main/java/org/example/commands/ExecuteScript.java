@@ -1,6 +1,8 @@
-package org.example.system;
+package org.example.commands;
 
 import org.example.model.LabWork;
+import org.example.system.Client;
+import org.example.system.Request;
 
 import java.io.*;
 import java.util.Arrays;
@@ -9,9 +11,10 @@ import java.util.Stack;
 public class ExecuteScript {
     private static Stack<File> stack = new Stack<>();
 
-    public static void execute(String fileName) {
-        Request request = null;
-        File file = new File(fileName);
+    public static void execute(Request request) {
+        while (true){
+            System.out.println("filename");
+        File file = new File(filename);
 
         if (stack.contains(file)) {
             System.err.println("Рекурсия обнаружена");
@@ -24,7 +27,7 @@ public class ExecuteScript {
         }
 
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.trim().split("\\s+");
@@ -69,7 +72,7 @@ public class ExecuteScript {
         } catch (IOException e) {
             System.err.println("");
         }
-    }
+    }}
 
     public String getName() {
         return "execute_script";
