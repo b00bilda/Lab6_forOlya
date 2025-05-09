@@ -1,6 +1,7 @@
 package org.example.system;
 
 
+import org.example.commands.Command;
 import org.example.model.*;
 import org.example.model.Difficulty;
 
@@ -8,9 +9,11 @@ import java.util.Scanner;
 
 
 
-public class Add {
+public class Add extends Command {
     public Add() {
+        super("add");
     }
+
 
     public String[] execute() throws IllegalAccessException  {
         // LabWork labworkNew = new LabWork();
@@ -188,6 +191,11 @@ public class Add {
         return labWorkData;
     }
 
+
+    @Override
+    public void execute(Request request) throws IllegalAccessException {
+        execute();
+    }
 
     public String getHelp() {
         return "добавляет новый labwork в коллекцию";

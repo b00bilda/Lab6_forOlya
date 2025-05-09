@@ -16,7 +16,7 @@ public class CSVCollectionManager {
     private String filePath;
     private String delimiter;
 
-    public CSVCollectionManager(String filePath, String delimiter) {
+    public CSVCollectionManager() {
         this.filePath = filePath;
         this.delimiter = delimiter;
         this.dataCollection = new ArrayList<>();

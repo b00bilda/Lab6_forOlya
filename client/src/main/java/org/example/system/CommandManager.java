@@ -13,7 +13,7 @@ public final class CommandManager {
         commandList.put("show", new Show());
         commandList.put("info", new Info());
         commandList.put("add", new Add());
-        commandList.put("update_by_id", new Update_id());
+        commandList.put("update_by_id", new UpdateId());
         commandList.put("remove_by_id", new RemoveById());
         commandList.put("clear", new Clear());
         commandList.put("save", new Save(csvCollectionManager)); // Передаем CSVCollectionManager
@@ -47,5 +47,6 @@ public final class CommandManager {
         } else {
             return "Такой команды не существует";
         }
+        return " ??????";
     }
 }

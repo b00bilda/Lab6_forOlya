@@ -21,6 +21,6 @@ public class Main {
         Client client = new Client();
         CSVCollectionManager manager = new CSVCollectionManager();
         CommandManager commandManager = new CommandManager(manager);
-        client.start();
+        client.start(commandManager);
     }
 }
