@@ -1,5 +1,7 @@
 package org.example.system;
-import model.*;
+
+
+import org.example.model.*;
 
 import java.util.Scanner;
 
@@ -9,18 +11,20 @@ public interface ReaderCreator {
         return
     }*/
 
-    public default Person personReaderCreator() throws IllegalAccessException {
+    public default Person personReaderCreator(String args[]) throws IllegalAccessException {
         Scanner in = new Scanner(System.in);
         Person personNew = new Person();
         System.out.println("Введите информацию о человеке: ");
         System.out.println("Введите имя: ");
-        personNew.setName(in.nextLine());
+        args[0] = in.nextLine();
+        personNew.setName(args[0]);
         int selectedWeight = 0;
 
         while (selectedWeight == 0) {
             System.out.println("Введите вес: ");
             try {
-                selectedWeight = Integer.parseInt(in.nextLine());
+                args[1] = in.nextLine();
+                selectedWeight = Integer.parseInt(args[1]);
             } catch (IllegalArgumentException e) {
                 System.out.println("Ошибка: Некорректный ввод веса. Пожалуйста, введите еще раз");
             }
@@ -37,7 +41,8 @@ public interface ReaderCreator {
             }
 
             try {
-                selectedEyeColor = Color.valueOf(in.nextLine());
+                args[2] = in.nextLine();
+                selectedEyeColor = Color.valueOf(args[2]);
             } catch (IllegalArgumentException e) {
                 System.out.println("Ошибка: Некорректный ввод цвета. Пожалуйста, введите еще раз");
             }
@@ -53,7 +58,8 @@ public interface ReaderCreator {
             }
 
             try {
-                selectedHairColor = Color.valueOf(in.nextLine());
+                args[3] = in.nextLine();
+                selectedHairColor = Color.valueOf(args[3]);
             } catch (IllegalArgumentException e) {
                 System.out.println("Ошибка: Некорректный ввод цвета. Пожалуйста, введите еще раз");
             }
@@ -64,12 +70,13 @@ public interface ReaderCreator {
 
         while (selectedCountry == null) {
             System.out.println("Введите национальность: ");
-            for (Country country : Country.values()) {
-                System.out.println(country);
+            for (Country countryy : Country.values()) {
+                System.out.println(countryy);
             }
 
             try {
-                selectedCountry = Country.valueOf(in.nextLine());
+                args[4] = in.nextLine();
+                selectedCountry = Country.valueOf(args[4]);
             } catch (IllegalArgumentException e) {
                 System.out.println("Ошибка: Некорректный ввод национальности. Пожалуйста, введите еще раз");
             }
@@ -77,20 +84,17 @@ public interface ReaderCreator {
         personNew.setNationality(selectedCountry);
 
         System.out.println("Введите местоположение: ");
-        personNew.setLocation(locationReaderCreator());
-        return personNew;
-    }
-    public default Location locationReaderCreator() throws IllegalAccessException {
-        Scanner in = new Scanner(System.in);
+
         Location locationNew = new Location();
         System.out.println("Введите название места: ");
-        locationNew.setName(in.nextLine());
+        args[5] = in.nextLine();
+        locationNew.setName(args[5]);
         long x;
         while (true) {
             System.out.print("x = ");
             try {
-                String input = in.nextLine();
-                x = Long.parseLong(input);
+                args[6] = in.nextLine();
+                x = Long.parseLong(args[6]);
                 break; // Выход из цикла, если ввод успешен
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -101,8 +105,8 @@ public interface ReaderCreator {
         while (true) {
             System.out.print("y = ");
             try {
-                String input = in.nextLine();
-                y = Integer.parseInt(input);
+                args[7] = in.nextLine();
+                y = Integer.parseInt(args[7]);
                 break; // Выход из цикла, если ввод успешен
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -113,14 +117,23 @@ public interface ReaderCreator {
         while (true) {
             System.out.print("z = ");
             try {
-                String input = in.nextLine();
-                z = Float.parseFloat(input);
+                args[8] = in.nextLine();
+                z = Float.parseFloat(args[8]);
                 break; // Выход из цикла, если ввод успешен
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
             }
         }
         locationNew.setZ(z);
+
+
+
+        personNew.setLocation(locationNew);
+        return personNew;
+    }
+    public default Location locationReaderCreator(String x, String y, String z, String name) throws IllegalAccessException {
+        Scanner in = new Scanner(System.in);
+        Location locationNew = new Location(Long.parseLong(x), Integer.parseInt(y), Float.parseFloat(z), name);
         return locationNew;
     }
     public default Coordinates coordinateReaderCreator() throws IllegalAccessException {

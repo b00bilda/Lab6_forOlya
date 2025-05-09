@@ -58,7 +58,7 @@ public class RemoveAnyByAuthor extends Command implements ReaderCreator {
 
         author.setNationality(selectedCountry);
 
-        author.setLocation(new Location(Integer.parseInt(request.getArgs()[5]), Float.parseFloat(request.getArgs()[6]), request.getArgs()[7]));
+        author.setLocation(new Location(Long.parseLong(request.getArgs()[5]), Integer.parseInt(request.getArgs()[6]), Float.parseFloat(request.getArgs()[7]), request.getArgs()[8]));
 
 
         Iterator<LabWork> iterator = priorityQueue.iterator();

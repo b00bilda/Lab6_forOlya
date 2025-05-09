@@ -17,13 +17,8 @@ public class UpdateId extends Command implements ReaderCreator {
     }
     @Override
     public String execute(Request request) throws IllegalAccessException {
-        long id = 0;
-            try {
-                String input = request.getArgs()[0];
-                id = Long.parseLong(input);
-            } catch (NumberFormatException e) {
-                System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число long");
-            }
+        long id = Long.parseLong(request.getArgs()[0]);
+
         boolean f = false;
         Iterator<LabWork> iterator = priorityQueue.iterator();
         while (iterator.hasNext()) {

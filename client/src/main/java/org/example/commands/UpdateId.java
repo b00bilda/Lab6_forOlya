@@ -22,8 +22,8 @@ public class UpdateId extends Command{
         while (true) {
             System.out.println("Введите ID: ");
             try {
-                args[1] = in.nextLine();
-                id = Long.parseLong(args[1]);
+                args[0] = in.nextLine();
+                id = Long.parseLong(args[0]);
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число long");
@@ -39,8 +39,8 @@ public class UpdateId extends Command{
                 f = true;
                 System.out.println("Введите имя: ");
                 //while...
-                args[2] = in.nextLine();
-                lb.setName(args[2]);
+                args[1] = in.nextLine();
+                lb.setName(args[1]);
 
                 Coordinates coordinatesNew = new Coordinates();
                 System.out.println("Введите координаты местоположения:");
@@ -48,8 +48,8 @@ public class UpdateId extends Command{
                 while (true) {
                     System.out.print("x = ");
                     try {
-                        args[3] = in.nextLine();
-                        x = Float.parseFloat(args[3]);
+                        args[2] = in.nextLine();
+                        x = Float.parseFloat(args[2]);
                         break; // Выход из цикла, если ввод успешен
                     } catch (NumberFormatException e) {
                         System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -60,8 +60,8 @@ public class UpdateId extends Command{
                 while (true) {
                     System.out.print("y = ");
                     try {
-                        args[4] = in.nextLine();
-                        y = Float.parseFloat(args[4]);
+                        args[3] = in.nextLine();
+                        y = Float.parseFloat(args[3]);
                         break; // Выход из цикла, если ввод успешен
                     } catch (NumberFormatException e) {
                         System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -75,8 +75,8 @@ public class UpdateId extends Command{
                 while (true) {
                     System.out.println("Введите Минимальный Пойнт: ");
                     try {
-                        args[5] = in.nextLine();
-                        minpoint = Float.parseFloat(args[5]);
+                        args[4] = in.nextLine();
+                        minpoint = Float.parseFloat(args[4]);
                         break;
                     } catch (NumberFormatException e) {
                         System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число double");
@@ -91,8 +91,8 @@ public class UpdateId extends Command{
                     }
 
                     try {
-                        args[6] = in.nextLine();
-                        selectedDifficulty = Difficulty.valueOf(args[6]);
+                        args[5] = in.nextLine();
+                        selectedDifficulty = Difficulty.valueOf(args[5]);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: Некорректный ввод сложности. Пожалуйста, введите еще раз");
                     }
@@ -101,15 +101,15 @@ public class UpdateId extends Command{
                 Person personNew = new Person();
                 System.out.println("Введите информацию о человеке: ");
                 System.out.println("Введите имя: ");
-                args[7]= in.nextLine();
-                personNew.setName(args[7]);
+                args[6]= in.nextLine();
+                personNew.setName(args[6]);
                 int selectedWeight = 0;
 
                 while (selectedWeight == 0) {
                     System.out.println("Введите вес: ");
                     try {
-                        args[8] = in.nextLine();
-                        selectedWeight = Integer.parseInt(args[8]);
+                        args[7] = in.nextLine();
+                        selectedWeight = Integer.parseInt(args[7]);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: Некорректный ввод веса. Пожалуйста, введите еще раз");
                     }
@@ -126,8 +126,8 @@ public class UpdateId extends Command{
                     }
 
                     try {
-                        args[9]= in.nextLine();
-                        selectedEyeColor = Color.valueOf(args[9]);
+                        args[8]= in.nextLine();
+                        selectedEyeColor = Color.valueOf(args[8]);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: Некорректный ввод цвета. Пожалуйста, введите еще раз");
                     }
@@ -143,8 +143,8 @@ public class UpdateId extends Command{
                     }
 
                     try {
-                        args[10] = in.nextLine();
-                        selectedHairColor = Color.valueOf(args[10]);
+                        args[9] = in.nextLine();
+                        selectedHairColor = Color.valueOf(args[9]);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: Некорректный ввод цвета. Пожалуйста, введите еще раз");
                     }
@@ -160,8 +160,8 @@ public class UpdateId extends Command{
                     }
 
                     try {
-                        args[11] = in.nextLine();
-                        selectedCountry = Country.valueOf(args[11]);
+                        args[10] = in.nextLine();
+                        selectedCountry = Country.valueOf(args[10]);
                     } catch (IllegalArgumentException e) {
                         System.out.println("Ошибка: Некорректный ввод национальности. Пожалуйста, введите еще раз");
                     }
@@ -177,8 +177,8 @@ public class UpdateId extends Command{
                 while (true) {
                     System.out.print("x = ");
                     try {
-                        args[12] = in.nextLine();
-                        x1 = Long.parseLong(args[12]);
+                        args[11] = in.nextLine();
+                        x1 = Long.parseLong(args[11]);
                         break; // Выход из цикла, если ввод успешен
                     } catch (NumberFormatException e) {
                         System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -189,8 +189,8 @@ public class UpdateId extends Command{
                 while (true) {
                     System.out.print("y = ");
                     try {
-                        args[13] = in.nextLine();
-                        y1 = Integer.parseInt(args[13]);
+                        args[12] = in.nextLine();
+                        y1 = Integer.parseInt(args[12]);
                         break; // Выход из цикла, если ввод успешен
                     } catch (NumberFormatException e) {
                         System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -201,8 +201,8 @@ public class UpdateId extends Command{
                 while (true) {
                     System.out.print("z = ");
                     try {
-                        args[14] = in.nextLine();
-                        z = Float.parseFloat(args[14]);
+                        args[13] = in.nextLine();
+                        z = Float.parseFloat(args[13]);
                         break; // Выход из цикла, если ввод успешен
                     } catch (NumberFormatException e) {
                         System.out.println("Ошибка: Некорректный формат числа. Пожалуйста, введите число с плавающей точкой (например, 3.14).");
@@ -224,6 +224,7 @@ public class UpdateId extends Command{
             }*/
         }
         //update_id(Long.parseLong(in.nextLine()));
+        request = new Request("remove_by_ID", new LabWork(), args);
         System.out.println("Выполнено успешно");
     }
 

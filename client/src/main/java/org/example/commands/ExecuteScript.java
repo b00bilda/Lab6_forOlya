@@ -13,9 +13,7 @@ public class ExecuteScript extends Command {
     private static Stack<File> stack = new Stack<>();
     Scanner in = new Scanner(System.in);
 
-    public ExecuteScript() {
-        super("name");
-    }
+
 
     public void execute(Request request, String args) {
         while (true){
@@ -78,6 +76,7 @@ public class ExecuteScript extends Command {
         } catch (IOException e) {
             System.err.println("");
         }
+            //request = new Request("remove_by_ID", new LabWork(), args);
     }}
 
     @Override

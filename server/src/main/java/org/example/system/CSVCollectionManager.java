@@ -56,7 +56,7 @@ public class CSVCollectionManager {
                         Color hairColor = (values[8].isEmpty()) ? null : Color.valueOf(values[8]);
                         Country nationality = (values[9].isEmpty()) ? null : Country.valueOf(values[9]);
 
-                        long locationX = Long.parseLong(values[10]);
+                        Long locationX = Long.parseLong(values[10]);
                         Integer locationY = Integer.parseInt(values[11]);
                         Float locationZ = Float.parseFloat(values[12]);
                         String locationName = values[13];
@@ -67,11 +67,11 @@ public class CSVCollectionManager {
                         coordinates.setY(coordinatesY);
 
                         // Создаем объект Location
-                        Location location = new Location();
-                        location.setX(locationX);
+                        Location location = new Location(locationX, locationY, locationZ, locationName);
+                        /*location.setX(locationX);
                         location.setY(locationY);
                         location.setZ(locationZ);
-                        location.setName(locationName);
+                        location.setName(locationName);*/
 
                         // Создаем объект Person
                         Person person = new Person();
