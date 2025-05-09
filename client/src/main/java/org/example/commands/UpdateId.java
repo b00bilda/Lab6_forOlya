@@ -13,6 +13,7 @@ public class UpdateId extends Command{
     public UpdateId() {
         super("update_id");
     }
+    private boolean needArguments = true;
     String[] args;
     @Override
     public void execute(Request request) throws IllegalAccessException {

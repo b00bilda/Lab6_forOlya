@@ -13,6 +13,7 @@ public class RemoveLower extends Command{
     public RemoveLower(){
         super("remove_lower");
     }
+    private boolean needArguments = true;
     String[] args;
     @Override
     public void execute(Request request) {

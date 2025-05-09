@@ -12,6 +12,7 @@ public class CountGreaterThanMinimalPoint extends Command {
     public CountGreaterThanMinimalPoint() {
         super("count_greater_than_minimal_point");
     }
+    private boolean needArguments = true;
     String args[];
     @Override
     public void execute(Request request) throws IllegalAccessException {

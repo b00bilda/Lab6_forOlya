@@ -14,6 +14,7 @@ public class RemoveAnyByAuthor extends Command implements ReaderCreator {
     public RemoveAnyByAuthor() {
         super("remove_any_by_author");
     }
+    private boolean needArguments = true;
     String args[] = new String[20];
     @Override
     public void execute(Request request) throws IllegalAccessException {
