@@ -1,6 +1,7 @@
 package org.example.system;
 
 import org.example.commands.*;
+import org.example.system.*;
 
 import java.util.HashMap;
 
@@ -30,14 +31,15 @@ public final class CommandManager {
         return commandList;
     }
 
-    public String startExecuting(Request request) {
+    public String startExecuting(Request request, String args[]) {
         if (commandList.containsKey(request.getMessage())) {
             if (request.getMessage().equals("add")) {
                 CollectionManager.add(request.getLabWork());
             } else {
                 Command command = commandList.get(request.getMessage());
                 try {
-                    return command.execute(request);
+                    command.execute(request);
+                    return "execute";
                 } catch (IllegalAccessException e) {
                     return "";
                 }
