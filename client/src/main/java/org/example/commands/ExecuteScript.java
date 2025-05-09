@@ -6,15 +6,21 @@ import org.example.system.Request;
 
 import java.io.*;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Stack;
 
-public class ExecuteScript {
+public class ExecuteScript extends Command {
     private static Stack<File> stack = new Stack<>();
+    Scanner in = new Scanner(System.in);
 
-    public static void execute(Request request) {
+    public ExecuteScript() {
+        super("name");
+    }
+
+    public void execute(Request request, String args) {
         while (true){
             System.out.println("filename");
-        File file = new File(filename);
+        File file = new File(in.nextLine());
 
         if (stack.contains(file)) {
             System.err.println("Рекурсия обнаружена");
@@ -73,6 +79,11 @@ public class ExecuteScript {
             System.err.println("");
         }
     }}
+
+    @Override
+    public String getHelp() {
+        return "";
+    }
 
     public String getName() {
         return "execute_script";

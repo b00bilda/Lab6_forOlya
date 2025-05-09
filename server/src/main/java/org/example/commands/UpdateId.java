@@ -35,7 +35,7 @@ public class UpdateId extends Command implements ReaderCreator {
                 lb.setName(request.getArgs()[1]);
 
                 Coordinates coordinatesNew = new Coordinates();
-                float x;
+                float x=0;
                     try {
                         String input = request.getArgs()[2];
                         x = Float.parseFloat(input);
@@ -45,7 +45,7 @@ public class UpdateId extends Command implements ReaderCreator {
                     }
 
                 coordinatesNew.setX(x);
-                float y;
+                float y=0;
                     try {
                         String input = request.getArgs()[3];
                         y = Float.parseFloat(input);
@@ -57,7 +57,7 @@ public class UpdateId extends Command implements ReaderCreator {
 
 
                 lb.setCoordinates(coordinateReaderCreator());
-                double minpoint;
+                double minpoint=0;
                     try {
                         String input = request.getArgs()[4];
                         minpoint = Float.parseFloat(input);

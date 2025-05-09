@@ -14,6 +14,10 @@ public class Person {
         return name;
     }
 
+    public Person(){
+
+    }
+
     public Person(String name, int weight, Color eyeColor, Color hairColor, Country nationality, Location location) {
         this.name = name;
         this.weight = weight;
