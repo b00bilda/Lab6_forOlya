@@ -23,6 +23,13 @@ public class CSVCollectionManager {
         loadDataFromFile();
     }
 
+    public CSVCollectionManager(String filePath, String delimiter) {
+        this.filePath = filePath;
+        this.delimiter = delimiter;
+        this.dataCollection = new ArrayList<>();
+        loadDataFromFile();
+    }
+
     public List<LabWork> getDataCollectionLabWork() {
         return dataCollection;
     }

@@ -10,6 +10,7 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Client {
@@ -22,6 +23,17 @@ public class Client {
         Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).create();
         LabWork labWork = null;
 
+
+        System.out.println("Введите путь к файлу CSV: ");
+        String filePath = scanner.nextLine();
+
+        System.out.println("Введите разделитель: ");
+        String delimiter = scanner.nextLine();
+
+        CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
+
+        // Получаем коллекцию LabWork из CSVCollectionManager
+        List<LabWork> labWorks = manager.getDataCollectionLabWork();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

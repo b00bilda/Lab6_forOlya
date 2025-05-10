@@ -70,7 +70,7 @@ public class UpdateId extends Command implements ReaderCreator {
                         System.out.println("Ошибка: Некорректный ввод сложности. Пожалуйста, введите еще раз");
                     }
 
-                lb.setAuthor(personReaderCreator());
+                lb.setAuthor(personReaderCreator(request.getArgs()[6], request.getArgs()[7], request.getArgs()[8], request.getArgs()[9], request.getArgs()[10], request.getArgs()[11], request.getArgs()[12], request.getArgs()[13]));
                 break;
             }
             /*try {
