@@ -20,14 +20,13 @@ public class CSVCollectionManager {
         this.filePath = filePath;
         this.delimiter = delimiter;
         this.dataCollection = new ArrayList<>();
-        loadDataFromFile();
+        //loadDataFromFile();
     }
 
     public CSVCollectionManager(String filePath, String delimiter) {
         this.filePath = filePath;
         this.delimiter = delimiter;
         this.dataCollection = new ArrayList<>();
-        loadDataFromFile();
     }
 
     public List<LabWork> getDataCollectionLabWork() {

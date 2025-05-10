@@ -20,10 +20,13 @@ public class Server {
             while (true) {
                 System.out.println("Ожидание соединения...");
 
-                try (Socket client = server.accept();
-                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-                     BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()))) {
-
+                try (Socket client = server.accept()) {
+                    System.out.println("успешно");
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+                    String filePath = reader.readLine();
+                    String delimiter = reader.readLine();
+                    CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
                     while (reader.readLine() != null) {
                         String json = reader.readLine().toString();
                         Request request = gson.fromJson(json, Request.class);
@@ -34,12 +37,13 @@ public class Server {
                     }
                     reader.close();
                     writer.close();
+                } catch (IOException e) {
+                    e.getMessage();
                 }
                 server.close();
             }
-
         } catch (IOException e) {
-            System.out.println("не тот порт");
+            e.getMessage();
         }
     }
 

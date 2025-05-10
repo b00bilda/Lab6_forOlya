@@ -23,16 +23,30 @@ public class Client {
         Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).create();
         LabWork labWork = null;
 
+        try {
+            client = new Socket("localhost",8080);
+            InputStream is = client.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(is));
+            OutputStream os = client.getOutputStream();
+            writer = new BufferedWriter(new OutputStreamWriter(os));
+        } catch (IOException e) {
+            e.getMessage();
+        }
+
 
         System.out.println("Введите путь к файлу CSV: ");
-        String[] pathArgs = new String[1];
-        pathArgs[0] = scanner.nextLine();
+        String filePath = scanner.nextLine();
 
 
         System.out.println("Введите разделитель: ");
         String delimiter = scanner.nextLine();
 
-        Request fileReadingRequest = new Request("save", null, pathArgs);
+        try {
+            writer.write(filePath);
+            writer.write(delimiter);
+        } catch (IOException e) {
+            e.getMessage();
+        }
 
         //CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
 
@@ -59,11 +73,6 @@ public class Client {
 
             String jsonRequest = gson.toJson(request);
             try {
-                client = new Socket("localhost",8080);
-                InputStream is = client.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(is));
-                OutputStream os = client.getOutputStream();
-                writer = new BufferedWriter(new OutputStreamWriter(os));
                 writer.write(jsonRequest);
 
                 while (reader.readLine() != null) {
