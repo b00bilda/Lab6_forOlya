@@ -10,9 +10,9 @@ public class Clear extends Command {
         super("clear");
     }
     @Override
-    public String execute(Request request) throws IllegalAccessException {
+    public void execute(Request request) throws IllegalAccessException {
         priorityQueue.clear();
-        return "Выполнено успешно";
+        System.out.println("Выполнено успешно");
     }
 
     @Override

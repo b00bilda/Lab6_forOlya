@@ -8,9 +8,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
+import static org.example.system.CommandManager.startExecuting;
+
 public class Server {
 
-    public void start(CommandManager commandManager)  {
+    public void start()  {
         Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).setPrettyPrinting().create();
 
         try {
@@ -25,7 +27,7 @@ public class Server {
                     while (reader.readLine() != null) {
                         String json = reader.readLine().toString();
                         Request request = gson.fromJson(json, Request.class);
-                        String message = commandManager.startExecuting(request);
+                        String message = startExecuting(request);
                         Response response = new Response(message);
                         String responseJson = gson.toJson(response);
                         writer.write(responseJson);

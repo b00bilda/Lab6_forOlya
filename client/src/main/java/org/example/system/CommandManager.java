@@ -17,7 +17,7 @@ public final class CommandManager {
         commandList.put("remove_by_id", new RemoveById());
         commandList.put("clear", new Clear());
         commandList.put("save", new Save(csvCollectionManager)); // Передаем CSVCollectionManager
-        commandList.put("execute_script", new ExecuteScript());
+        commandList.put("executeScript", new ExecuteScript());
         commandList.put("exit", new Exit());
         commandList.put("remove_first", new RemoveFirst());
         commandList.put("head", new Head());

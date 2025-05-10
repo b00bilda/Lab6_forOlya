@@ -13,9 +13,12 @@ public class ExecuteScript extends Command {
     private static Stack<File> stack = new Stack<>();
     Scanner in = new Scanner(System.in);
 
+    public ExecuteScript() {
+        super("executeScript");
+    }
 
 
-    public void execute(Request request, String args) {
+    public void execute(Request request) {
         while (true){
             System.out.println("filename");
         File file = new File(in.nextLine());
@@ -31,7 +34,7 @@ public class ExecuteScript extends Command {
         }
 
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(args[0])));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(request.getArgs()[0])));
             String line;
             while ((line = br.readLine()) != null) {
                 String[] parts = line.trim().split("\\s+");
@@ -87,6 +90,7 @@ public class ExecuteScript extends Command {
     public String getName() {
         return "execute_script";
     }
+
 
     public String getDescription() {
         return "executes script from file";

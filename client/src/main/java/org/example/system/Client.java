@@ -25,15 +25,19 @@ public class Client {
 
 
         System.out.println("Введите путь к файлу CSV: ");
-        String filePath = scanner.nextLine();
+        String[] pathArgs = new String[1];
+        pathArgs[0] = scanner.nextLine();
+
 
         System.out.println("Введите разделитель: ");
         String delimiter = scanner.nextLine();
 
-        CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
+        Request fileReadingRequest = new Request("save", null, pathArgs);
+
+        //CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
 
         // Получаем коллекцию LabWork из CSVCollectionManager
-        List<LabWork> labWorks = manager.getDataCollectionLabWork();
+        //List<LabWork> labWorks = manager.getDataCollectionLabWork();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();

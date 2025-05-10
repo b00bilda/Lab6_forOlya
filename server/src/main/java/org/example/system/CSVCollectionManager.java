@@ -118,7 +118,7 @@ public class CSVCollectionManager {
         }
     }
 
-    public boolean saveDataToFile(boolean appendToFile) {
+    public boolean saveDataToFile(boolean appendToFile, String filepath) {
         BufferedOutputStream bos = null;
         try {
             bos = new BufferedOutputStream(new FileOutputStream(filePath, appendToFile));

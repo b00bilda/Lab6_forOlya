@@ -33,7 +33,7 @@ public final class CommandManager {
         return commandList;
     }
 
-    public String startExecuting(Request request) {
+    public static String startExecuting(Request request) {
         if (commandList.containsKey(request.getMessage())) {
             if (request.getMessage().equals("add")) {
                 CollectionManager.add(request.getLabWork());

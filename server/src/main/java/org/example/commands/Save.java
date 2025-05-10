@@ -14,7 +14,7 @@ public class Save extends Command {
 
     @Override
     public String execute(Request request) throws IllegalAccessException {
-        csvCollectionManager.saveDataToFile(false); // false = перезапись
+        csvCollectionManager.saveDataToFile(false, request.getArgs()[0]); // false = перезапись
         return "Коллекция сохранена в файл.";
     }
 
