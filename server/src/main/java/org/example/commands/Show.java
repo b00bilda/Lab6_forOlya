@@ -17,9 +17,11 @@ public class Show extends Command {
 
     @Override
     public String execute(Request request) {
+        System.out.println("do show");
         Iterator<LabWork> iterator = priorityQueue.iterator();
         StringBuilder text = new StringBuilder();
         while (iterator.hasNext()) {
+            System.out.println("while show");
             LabWork labWork = iterator.next();
             text.append(labWork.toString() + "\n");
             System.out.println();

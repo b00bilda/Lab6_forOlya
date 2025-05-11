@@ -8,12 +8,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
 
-import static org.example.system.CommandManager.startExecuting;
+
 
 public class Server {
 
     public void start()  {
-        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).setPrettyPrinting().create();
+        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).create();
 
         try {
             ServerSocket server = new ServerSocket(8080);
@@ -24,28 +24,48 @@ public class Server {
                     System.out.println("успешно");
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
                     BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                    String filePath = reader.readLine();
-                    String delimiter = reader.readLine();
+
+                    String filePath = null;
+                    try {
+                        filePath = reader.readLine();
+                        System.out.println("название файла:" + filePath);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    String delimiter = null;
+                    try {
+                        delimiter = reader.readLine();
+                        System.out.println("разделитель" + delimiter);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
                     CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
-                    while (reader.readLine() != null) {
-                        System.out.println("зашел в цикл");
-                        String json = reader.readLine().toString();
+                    CommandManager commandManager = new CommandManager(manager);
+
+                    String json;
+                    while ((json = reader.readLine()) != null) {
+                        System.out.println("получен запрос: " + json);
                         Request request = gson.fromJson(json, Request.class);
-                        String message = startExecuting(request);
+                        String message = commandManager.startExecuting(request);
                         Response response = new Response(message);
                         String responseJson = gson.toJson(response);
-                        writer.write(responseJson);
+                        writer.write(responseJson + "\n");
+                        writer.flush();
+                        System.out.println("отправлен ответ: " + responseJson);
                     }
                     reader.close();
                     writer.close();
                 } catch (IOException e) {
-                    e.getMessage();
+                    System.err.println("чтото пошло не так");
                 }
-                server.close();
             }
         } catch (IOException e) {
             e.getMessage();
         }
+
     }
 
 }

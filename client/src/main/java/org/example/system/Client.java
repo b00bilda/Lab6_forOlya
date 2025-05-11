@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Client {
     Socket client;
     BufferedReader reader;
-    static BufferedWriter writer;
+    static PrintWriter writer;
 
     public void start(CommandManager commandManager) {
         Scanner scanner = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class Client {
             InputStream is = client.getInputStream();
             reader = new BufferedReader(new InputStreamReader(is));
             OutputStream os = client.getOutputStream();
-            writer = new BufferedWriter(new OutputStreamWriter(os));
+            writer = new PrintWriter(new OutputStreamWriter(os), true);
         } catch (IOException e) {
             e.getMessage();
         }
@@ -36,17 +36,14 @@ public class Client {
 
         System.out.println("Введите путь к файлу CSV: ");
         String filePath = scanner.nextLine();
+        writer.println(filePath);
+        System.out.println("введен путь: " + filePath);
 
 
         System.out.println("Введите разделитель: ");
         String delimiter = scanner.nextLine();
-
-        try {
-            writer.write(filePath);
-            writer.write(delimiter);
-        } catch (IOException e) {
-            e.getMessage();
-        }
+        System.out.println("введен разделитель: " + delimiter);
+        writer.println(delimiter);
 
         //CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
 
@@ -54,40 +51,48 @@ public class Client {
         //List<LabWork> labWorks = manager.getDataCollectionLabWork();
 
         while (scanner.hasNextLine()) {
-            System.out.println("зашел в цикл строка 57");
-            /*String line = scanner.nextLine();
-            String[] commandLine = line.split(" ");*/
-            String commandName = scanner.nextLine();
+            String line = scanner.nextLine();
+            String[] commandLine = line.split(" ");
+            String commandName = commandLine[0];
             // String[] arguments = Arrays.copyOfRange(commandLine, 1, commandLine.length);
             Command command = commandManager.getCommandList().get(commandName);
-            Request request = null;
 
-            if (!command.isNeedArguments()) {
-                System.out.println("non need arguments");
-                request = new Request(commandName, labWork, null);
-                try {
-                    command.execute(request);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+            Request request = new Request(commandName, labWork, null);
+            try {
+                if (command.isNeedArguments()) {
+                    command.execute(request);  // Теперь execute изменит данные внутри request
                 }
-            } else {
-                System.out.println("need argument");
-                try {
-                    command.execute(request);
-
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+            } catch (IllegalAccessException e) {
+                e.getMessage();
             }
+
+
+//            if (!command.isNeedArguments()) {
+//                request = new Request(commandName, labWork, null);
+//            } else {
+//                try {
+//                    command.execute(request);
+//                    continue;
+//                } catch (IllegalAccessException e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
             String jsonRequest = gson.toJson(request);
             try {
-                writer.write(jsonRequest);
+                writer.println(jsonRequest);
 
-                while (reader.readLine() != null) {
-                    String responseJson = reader.readLine();
+                String responseJson;
+                while ((responseJson = reader.readLine()) != null) {
+                    if (responseJson.trim().isEmpty()) {
+                        continue;  // Пропускаем пустые строки, если они есть
+                    }
+
+                    System.out.println("Ответ от сервера: " + responseJson);
                     Response response = gson.fromJson(responseJson, Response.class);
+                    System.out.println("Ответ получен:");
                     System.out.println(response.getMessage());
+                    break;  // Ответ получен, выходим из цикла
                 }
 
 
@@ -102,11 +107,6 @@ public class Client {
     public static void sendRequest(Request request) {
         Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).create();
         String jsonRequest = gson.toJson(request);
-        try {
-            writer.write(jsonRequest);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        writer.println(jsonRequest);
     }
 }

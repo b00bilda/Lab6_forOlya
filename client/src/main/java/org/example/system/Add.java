@@ -17,7 +17,7 @@ public class Add extends Command {
     public boolean needArguments = true;
 
 
-    public String[] execute() throws IllegalAccessException  {
+    public void execute(Request request) throws IllegalAccessException {
         // LabWork labworkNew = new LabWork();
         String[] labWorkData = new String[14];
         Scanner in = new Scanner(System.in);
@@ -121,7 +121,6 @@ public class Add extends Command {
             for (Color color : Color.values()) {
                 System.out.println(color);
             }
-
             try {
                 String line = in.nextLine();
                 selectedHairColor = Color.valueOf(line);
@@ -190,14 +189,13 @@ public class Add extends Command {
         labWorkData[13] = String.valueOf(z);
 
         System.out.println("Выполнено успешно");
-        return labWorkData;
+        LabWork labWork = new LabWork(labWorkData);
+        request.setLabWork(labWork);
+
+        System.out.println("Реквест обновлен: " + request.toString());
     }
 
 
-    @Override
-    public void execute(Request request) throws IllegalAccessException {
-        execute();
-    }
 
     public String getHelp() {
         return "добавляет новый labwork в коллекцию";

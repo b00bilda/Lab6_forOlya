@@ -26,15 +26,16 @@ public class LabWork implements Comparable<LabWork> {
     }
 
     public LabWork(String[] data) {
-        this.id = generateUniqueLongId();
-        this.name = data[0];
-        this.coordinates = new Coordinates(Float.parseFloat(data[1]), Float.parseFloat(data[2]));
-        this.creationDate = new Date();
-        this.minimalPoint = Double.valueOf(data[3]);
-        this.difficulty = Difficulty.valueOf(data[4]);
-        this.author = new Person(data[5], Integer.parseInt(data[6]), Color.valueOf(data[7]),
-                Color.valueOf(data[8]), Country.valueOf(data[9]),
-                new Location(Long.parseLong(data[10]), Integer.parseInt(data[11]), Float.parseFloat(data[12]), data[13]));
+
+            this.id = generateUniqueLongId();
+            this.name = data[0];
+            this.coordinates = new Coordinates(Float.parseFloat(data[1]), Float.parseFloat(data[2]));
+            this.creationDate = new Date();
+            this.minimalPoint = Double.valueOf(data[3]);
+            this.difficulty = Difficulty.valueOf(data[4]);
+            this.author = new Person(data[5], Integer.parseInt(data[6]), Color.valueOf(data[7]),
+                    Color.valueOf(data[8]), Country.valueOf(data[9]),
+                    new Location(Long.parseLong(data[11]), Integer.parseInt(data[12]), Float.parseFloat(data[13]), data[10]));
 
     }
 

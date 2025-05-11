@@ -14,7 +14,7 @@ public final class CommandManager {
         commandList.put("help", new Help());
         commandList.put("show", new Show());
         commandList.put("info", new Info());
-        //commandList.put("add", new Add());
+        commandList.put("add", new Add());
         commandList.put("update_by_id", new UpdateId());
         commandList.put("remove_by_id", new RemoveById());
         commandList.put("clear", new Clear());
@@ -36,9 +36,9 @@ public final class CommandManager {
     public static String startExecuting(Request request) {
         System.out.println("startExecuting");
         if (commandList.containsKey(request.getMessage())) {
-            if (request.getMessage().equals("add")) {
+            /*if (request.getMessage().equals("add")) {
                 CollectionManager.add(request.getLabWork());
-            } else {
+            } else {*/
                 Command command = commandList.get(request.getMessage());
                 try {
                     return command.execute(request);
@@ -46,9 +46,8 @@ public final class CommandManager {
                     return "";
                 }
             }
-        } else {
+         else {
             return "Такой команды не существует";
         }
-        return "execute";
     }
 }

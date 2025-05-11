@@ -16,8 +16,10 @@ public class Show extends Command {
     public boolean needArguments = false;
     @Override
     public void execute(Request request) {
+        System.out.println("do show");
         Iterator<LabWork> iterator = priorityQueue.iterator();
         while (iterator.hasNext()) {
+            System.out.println("while show");
             LabWork labWork = iterator.next();
             labWork.ShowLabWork(labWork);
             System.out.println();
