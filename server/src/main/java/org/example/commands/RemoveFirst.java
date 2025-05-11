@@ -1,9 +1,10 @@
 package org.example.commands;
 import org.example.system.Request;
+import org.example.system.ServerEnvironment;
 
 import java.util.Scanner;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 public class RemoveFirst extends Command {
     public RemoveFirst() {
@@ -11,7 +12,7 @@ public class RemoveFirst extends Command {
     }
     @Override
     public String execute(Request request) throws IllegalAccessException {
-        priorityQueue.poll();
+        ServerEnvironment.getInstance().getCollectionManager().getCollection().poll();
         return "Выполнено успешно";
     }
 

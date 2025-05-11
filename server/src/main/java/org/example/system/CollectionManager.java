@@ -7,29 +7,29 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class CollectionManager implements ReaderCreator {
-    public static PriorityQueue<LabWork> priorityQueue = new PriorityQueue<>(Comparator.naturalOrder());
-    public static PriorityQueue<LabWork> getCollection(){
+    public PriorityQueue<LabWork> priorityQueue = new PriorityQueue<>(Comparator.naturalOrder());
+    public PriorityQueue<LabWork> getCollection(){
         return priorityQueue;
     }
-    public static void add(LabWork labWork){
+    public void add(LabWork labWork){
         priorityQueue.add(labWork);
     }
 
 
 
-    public static void remove(LabWork labWork){
+    public void remove(LabWork labWork){
         priorityQueue.remove(labWork);
     }
 
-    public static void removeByID(long idToRemove){
+    public void removeByID(long idToRemove){
         priorityQueue.removeIf(item -> item.getId() == idToRemove);
     }
 
-    public static int getSize() {
+    public int getSize() {
         return priorityQueue.size();
     }
 
-    public static LabWork getFirst() {
+    public LabWork getFirst() {
         if (priorityQueue.isEmpty()) {
             return null;
         }

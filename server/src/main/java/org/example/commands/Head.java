@@ -3,10 +3,11 @@ package org.example.commands;
 
 import org.example.model.*;
 import org.example.system.Request;
+import org.example.system.ServerEnvironment;
 
 import java.util.HashMap;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 
 public class Head extends Command {
@@ -16,7 +17,7 @@ public class Head extends Command {
 
     @Override
     public String execute(Request request) throws IllegalAccessException {
-        LabWork highestPriorityElement = priorityQueue.peek(); // Получаем элемент с наивысшим приоритетом
+        LabWork highestPriorityElement = ServerEnvironment.getInstance().getCollectionManager().getCollection().peek(); // Получаем элемент с наивысшим приоритетом
         StringBuilder text = new StringBuilder();
         if (highestPriorityElement != null) {
             text.append("Первый элемент: ");

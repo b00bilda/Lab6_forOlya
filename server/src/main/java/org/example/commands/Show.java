@@ -4,10 +4,11 @@ package org.example.commands;
 
 import org.example.model.*;
 import org.example.system.Request;
+import org.example.system.ServerEnvironment;
 
 import java.util.Iterator;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 
 public class Show extends Command {
@@ -18,7 +19,7 @@ public class Show extends Command {
     @Override
     public String execute(Request request) {
         System.out.println("do show");
-        Iterator<LabWork> iterator = priorityQueue.iterator();
+        Iterator<LabWork> iterator = ServerEnvironment.getInstance().getCollectionManager().getCollection().iterator();
         StringBuilder text = new StringBuilder();
         while (iterator.hasNext()) {
             System.out.println("while show");

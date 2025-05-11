@@ -8,7 +8,7 @@ import org.example.system.*;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 public class RemoveAnyByAuthor extends Command implements ReaderCreator {
     public RemoveAnyByAuthor() {
@@ -61,7 +61,7 @@ public class RemoveAnyByAuthor extends Command implements ReaderCreator {
         author.setLocation(new Location(Long.parseLong(request.getArgs()[5]), Integer.parseInt(request.getArgs()[6]), Float.parseFloat(request.getArgs()[7]), request.getArgs()[8]));
 
 
-        Iterator<LabWork> iterator = priorityQueue.iterator();
+        Iterator<LabWork> iterator = ServerEnvironment.getInstance().getCollectionManager().getCollection().iterator();
         //priorityQueue.removeIf(labWork -> labWork.getAuthor() == author);
         boolean removed = false;
         while (iterator.hasNext()) {

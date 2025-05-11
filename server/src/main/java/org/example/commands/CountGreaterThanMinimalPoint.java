@@ -2,11 +2,12 @@ package org.example.commands;
 
 import org.example.model.LabWork;
 import org.example.system.Request;
+import org.example.system.ServerEnvironment;
 
 import java.util.Iterator;
 import java.util.Scanner;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 public class CountGreaterThanMinimalPoint extends Command {
     public CountGreaterThanMinimalPoint() {
@@ -17,7 +18,7 @@ public class CountGreaterThanMinimalPoint extends Command {
 //        System.out.println("Введите значение минимального пойнта: ");
 //        Scanner in = new Scanner(System.in);
         double minpoint = Double.parseDouble(request.getArgs()[0]);
-        Iterator<LabWork> iterator = priorityQueue.iterator();
+        Iterator<LabWork> iterator = ServerEnvironment.getInstance().getCollectionManager().getCollection().iterator();
         int count = 0;
         while (iterator.hasNext()) {
             LabWork labWork = iterator.next();

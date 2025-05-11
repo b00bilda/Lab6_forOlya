@@ -2,7 +2,7 @@ package org.example.commands;
 
 import org.example.system.Request;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 public class Add extends Command {
     public Add() {

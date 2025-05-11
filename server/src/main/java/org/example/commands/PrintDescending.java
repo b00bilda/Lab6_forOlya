@@ -7,8 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 import org.example.model.*;
+import org.example.system.ServerEnvironment;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 public class PrintDescending extends Command {
     public PrintDescending() {
@@ -20,7 +21,7 @@ public class PrintDescending extends Command {
         StringBuilder text = new StringBuilder();
         // Создаем копию PriorityQueue.  Так как используется naturalOrder(),
         // нам не нужно передавать компаратор.
-        PriorityQueue<LabWork> queueCopy = new PriorityQueue<>(priorityQueue);
+        PriorityQueue<LabWork> queueCopy = new PriorityQueue<>(ServerEnvironment.getInstance().getCollectionManager().getCollection());
 
         // Преобразуем в ArrayList для сортировки
         List<LabWork> reversedQueue = new ArrayList<>(queueCopy);

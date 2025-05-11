@@ -1,10 +1,11 @@
 package org.example.commands;
 
 import org.example.system.Request;
+import org.example.system.ServerEnvironment;
 
 import java.util.Scanner;
 
-import static org.example.system.CollectionManager.removeByID;
+//import static org.example.system.CollectionManager.removeByID;
 
 public class RemoveById extends Command {
     public RemoveById() {
@@ -12,7 +13,7 @@ public class RemoveById extends Command {
     }
     @Override
     public String execute(Request request) throws IllegalAccessException {
-        removeByID(Long.parseLong(request.getArgs()[0]));
+        ServerEnvironment.getInstance().getCollectionManager().removeByID(Long.parseLong(request.getArgs()[0]));
         return "Выполнено успешно";
     }
 

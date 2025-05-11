@@ -8,7 +8,7 @@ import org.example.system.*;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 
 public class UpdateId extends Command implements ReaderCreator {
@@ -20,7 +20,7 @@ public class UpdateId extends Command implements ReaderCreator {
         long id = Long.parseLong(request.getArgs()[0]);
 
         boolean f = false;
-        Iterator<LabWork> iterator = priorityQueue.iterator();
+        Iterator<LabWork> iterator = ServerEnvironment.getInstance().getCollectionManager().getCollection().iterator();
         while (iterator.hasNext()) {
             LabWork lb = iterator.next();
             long currentId = lb.getId();

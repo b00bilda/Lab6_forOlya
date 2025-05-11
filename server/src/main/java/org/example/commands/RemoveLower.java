@@ -2,10 +2,11 @@ package org.example.commands;
 
 
 import org.example.system.Request;
+import org.example.system.ServerEnvironment;
 
 import java.util.Scanner;
 
-import static org.example.system.CollectionManager.priorityQueue;
+//import static org.example.system.CollectionManager.priorityQueue;
 
 
 public class RemoveLower extends Command{
@@ -27,7 +28,7 @@ public class RemoveLower extends Command{
             }
         }
         long lastElementUnderDelete = id;
-        priorityQueue.removeIf(item -> item.getId() < lastElementUnderDelete);
+        ServerEnvironment.getInstance().getCollectionManager().getCollection().removeIf(item -> item.getId() < lastElementUnderDelete);
         return "Выполнено успешно";
     }
 
