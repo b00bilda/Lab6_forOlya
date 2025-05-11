@@ -40,10 +40,14 @@ public class Server {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
+                    CollectionManager colmanager = new CollectionManager();
 
                     CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
                     CommandManager commandManager = new CommandManager(manager);
+
+                    ServerEnvironment.getInstance().setCommandManager(commandManager);
+                    ServerEnvironment.getInstance().setCSVCollectionManager(manager);
+                    ServerEnvironment.getInstance().setCollectionManager(colmanager);
 
                     String json;
                     while ((json = reader.readLine()) != null) {

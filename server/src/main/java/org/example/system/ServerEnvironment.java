@@ -37,7 +37,7 @@ public class ServerEnvironment {
         this.commandManager = commandManager;
     }
 
-    public void setFileManager(CSVCollectionManager fileManager) {
+    public void setCSVCollectionManager(CSVCollectionManager fileManager) {
         this.fileManager = fileManager;
     }
 }

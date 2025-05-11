@@ -36,4 +36,9 @@ public class CollectionManager implements ReaderCreator {
         return priorityQueue.peek(); // peek() retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
     }
 
+    public CollectionManager() {
+        // new IdGenerator();
+        priorityQueue = new PriorityQueue<>();
+    }
+
 }
