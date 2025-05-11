@@ -131,6 +131,18 @@ public class LabWork implements Comparable<LabWork> {
 
     private static final Random random = new Random();
 
+    @Override
+    public String toString() {
+        return "LabWork{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=" + coordinates.toString() +
+                ", creationDate=" + creationDate.toString() +
+                ", minimalPoint=" + minimalPoint +
+                ", difficulty=" + difficulty +
+                ", author=" + author.toString() +
+                '}';
+    }
 
     public static long generateUniqueLongId() {
         long newId;

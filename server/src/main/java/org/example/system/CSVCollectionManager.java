@@ -20,14 +20,14 @@ public class CSVCollectionManager {
         this.filePath = filePath;
         this.delimiter = delimiter;
         this.dataCollection = new ArrayList<>();
-        loadDataFromFile();
+        //loadDataFromFile();
     }
 
     public List<LabWork> getDataCollectionLabWork() {
         return dataCollection;
     }
 
-    private void loadDataFromFile() {
+    public void loadDataFromFile() {
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(filePath), Charset.forName("UTF-8"));
@@ -89,7 +89,7 @@ public class CSVCollectionManager {
                         labWork.setDifficulty(difficulty);
                         labWork.setMinimalPoint(minimalPoint);
 
-                        dataCollection.add(labWork);
+                        ServerEnvironment.getInstance().getCollectionManager().getCollection().add(labWork);
 
                     } catch (NumberFormatException e) {
                         System.err.println("Ошибка преобразования числа: " + e.getMessage());

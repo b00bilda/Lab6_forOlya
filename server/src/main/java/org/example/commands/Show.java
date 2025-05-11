@@ -7,6 +7,8 @@ import org.example.system.Request;
 import org.example.system.ServerEnvironment;
 
 import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 //import static org.example.system.CollectionManager.priorityQueue;
 
@@ -19,14 +21,13 @@ public class Show extends Command {
     @Override
     public String execute(Request request) {
         System.out.println("do show");
-        Iterator<LabWork> iterator = ServerEnvironment.getInstance().getCollectionManager().getCollection().iterator();
         StringBuilder text = new StringBuilder();
-        while (iterator.hasNext()) {
-            System.out.println("while show");
-            LabWork labWork = iterator.next();
-            text.append(labWork.toString() + "\n");
-            System.out.println();
-            }
+        PriorityQueue<LabWork> priorityQueue = ServerEnvironment.getInstance().getCollectionManager().getCollection();
+
+        for (LabWork labWork : priorityQueue) {
+            text.append(labWork.toString()).append("\n");
+        }
+        System.out.println(text);
         return text.toString();
     }
 

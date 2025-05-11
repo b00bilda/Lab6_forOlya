@@ -79,22 +79,24 @@ public class Client {
 //            }
 
             String jsonRequest = gson.toJson(request);
+
             try {
                 writer.println(jsonRequest);
 
+                System.out.println("ждем");
+
+                // Чтение ответа от сервера
                 String responseJson;
                 while ((responseJson = reader.readLine()) != null) {
                     if (responseJson.trim().isEmpty()) {
-                        continue;  // Пропускаем пустые строки, если они есть
+                        continue;  // Пропускаем пустые строки
                     }
 
                     System.out.println("Ответ от сервера: " + responseJson);
                     Response response = gson.fromJson(responseJson, Response.class);
                     System.out.println("Ответ получен:");
                     System.out.println(response.getMessage());
-                    break;  // Ответ получен, выходим из цикла
                 }
-
 
             } catch (IOException e) {
                 e.printStackTrace();

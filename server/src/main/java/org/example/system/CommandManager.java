@@ -33,7 +33,7 @@ public final class CommandManager {
         return commandList;
     }
 
-    public static String startExecuting(Request request) {
+    public String startExecuting(Request request) {
         System.out.println("startExecuting");
         if (commandList.containsKey(request.getMessage())) {
             /*if (request.getMessage().equals("add")) {
@@ -43,7 +43,7 @@ public final class CommandManager {
                 try {
                     return command.execute(request);
                 } catch (IllegalAccessException e) {
-                    return "";
+                    return "err";
                 }
             }
          else {

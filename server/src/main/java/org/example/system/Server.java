@@ -13,7 +13,7 @@ import java.util.Date;
 public class Server {
 
     public void start()  {
-        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).create();
+        Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new JsonDate()).disableHtmlEscaping().create();
 
         try {
             ServerSocket server = new ServerSocket(8080);
@@ -48,6 +48,7 @@ public class Server {
                     ServerEnvironment.getInstance().setCommandManager(commandManager);
                     ServerEnvironment.getInstance().setCSVCollectionManager(manager);
                     ServerEnvironment.getInstance().setCollectionManager(colmanager);
+                    manager.loadDataFromFile();
 
                     String json;
                     while ((json = reader.readLine()) != null) {
@@ -56,7 +57,7 @@ public class Server {
                         String message = commandManager.startExecuting(request);
                         Response response = new Response(message);
                         String responseJson = gson.toJson(response);
-                        writer.write(responseJson + "\n");
+                        writer.write(responseJson);
                         writer.flush();
                         System.out.println("отправлен ответ: " + responseJson);
                     }
