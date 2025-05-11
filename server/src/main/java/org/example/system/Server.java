@@ -28,6 +28,7 @@ public class Server {
                     String delimiter = reader.readLine();
                     CSVCollectionManager manager = new CSVCollectionManager(filePath, delimiter);
                     while (reader.readLine() != null) {
+                        System.out.println("зашел в цикл");
                         String json = reader.readLine().toString();
                         Request request = gson.fromJson(json, Request.class);
                         String message = startExecuting(request);

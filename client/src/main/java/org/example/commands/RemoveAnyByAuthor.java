@@ -44,4 +44,8 @@ public class RemoveAnyByAuthor extends Command implements ReaderCreator {
     public String getHelp() {
         return "удалить из коллекции один элемент, значение поля author которого эквивалентно заданному";
     }
+    public boolean isNeedArguments() {
+        return needArguments;
+    }
+
 }

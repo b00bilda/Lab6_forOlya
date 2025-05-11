@@ -7,7 +7,7 @@ public class Exit extends Command {
     public Exit() {
         super("exit");
     }
-
+    public boolean needArguments = false;
     @Override
     public void execute(Request request) {
         System.out.println("Завершение программы...");
@@ -17,5 +17,8 @@ public class Exit extends Command {
     @Override
     public String getHelp() {
         return "завершение программы (без сохранения в файл)";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

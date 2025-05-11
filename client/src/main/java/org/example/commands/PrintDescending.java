@@ -34,9 +34,12 @@ public class PrintDescending extends Command {
         }
         System.out.println("Выполнено успешно");
     }
-
+    public boolean needArguments = false;
     @Override
     public String getHelp() {
         return "";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

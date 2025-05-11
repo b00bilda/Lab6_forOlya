@@ -12,11 +12,13 @@ import java.util.Stack;
 public class ExecuteScript extends Command {
     private static Stack<File> stack = new Stack<>();
     Scanner in = new Scanner(System.in);
-
+    public boolean needArguments = false;
     public ExecuteScript() {
         super("executeScript");
     }
-
+    public boolean isNeedArguments() {
+        return needArguments;
+    }
 
     public void execute(Request request) {
         while (true){

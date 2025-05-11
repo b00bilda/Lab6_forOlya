@@ -13,7 +13,10 @@ public class Head extends Command {
     public Head() {
         super("head");
     }
-
+    public boolean isNeedArguments() {
+        return needArguments;
+    }
+    public boolean needArguments = false;
     @Override
     public void execute(Request request) throws IllegalAccessException {
         LabWork highestPriorityElement = priorityQueue.peek(); // Получаем элемент с наивысшим приоритетом

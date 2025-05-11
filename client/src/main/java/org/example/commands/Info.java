@@ -30,9 +30,12 @@ public class Info extends Command {
             System.out.println("Коллекция пуста.");
         }
     }
-
+    public boolean needArguments = false;
     @Override
     public String getHelp() {
         return "вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

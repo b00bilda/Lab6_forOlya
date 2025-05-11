@@ -5,7 +5,7 @@ import org.example.system.CSVCollectionManager;
 import org.example.system.Request;
 
 public class Save extends Command {
-
+    public boolean needArguments = false;
     private final CSVCollectionManager csvCollectionManager;
 
     public Save(CSVCollectionManager csvCollectionManager) {
@@ -22,5 +22,8 @@ public class Save extends Command {
     @Override
     public String getHelp() {
         return "сохранить коллекцию в файл";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

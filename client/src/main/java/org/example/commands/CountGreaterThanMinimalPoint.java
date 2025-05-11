@@ -27,4 +27,7 @@ public class CountGreaterThanMinimalPoint extends Command {
     public String getHelp() {
         return "вывести количество элементов, значение поля minimalPoint которых больше заданного";
     }
+    public boolean isNeedArguments() {
+        return needArguments;
+    }
 }

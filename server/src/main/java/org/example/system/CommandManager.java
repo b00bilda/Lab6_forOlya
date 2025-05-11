@@ -34,6 +34,7 @@ public final class CommandManager {
     }
 
     public static String startExecuting(Request request) {
+        System.out.println("startExecuting");
         if (commandList.containsKey(request.getMessage())) {
             if (request.getMessage().equals("add")) {
                 CollectionManager.add(request.getLabWork());

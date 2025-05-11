@@ -14,6 +14,8 @@ public class Add extends Command {
         super("add");
     }
 
+    public boolean needArguments = true;
+
 
     public String[] execute() throws IllegalAccessException  {
         // LabWork labworkNew = new LabWork();
@@ -205,4 +207,7 @@ public class Add extends Command {
         Add add = new Add();
         stringCommandHashMap.put(add.getName(), help);
     }*/
+   public boolean isNeedArguments() {
+       return needArguments;
+   }
 }

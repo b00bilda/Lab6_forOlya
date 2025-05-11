@@ -13,7 +13,7 @@ public class Show extends Command {
     public Show() {
         super("show");
     }
-
+    public boolean needArguments = false;
     @Override
     public void execute(Request request) {
         Iterator<LabWork> iterator = priorityQueue.iterator();
@@ -28,5 +28,8 @@ public class Show extends Command {
     @Override
     public String getHelp() {
         return "выводит в стандартный поток вывода все элементы коллекции в строковом представлении";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

@@ -37,4 +37,7 @@ public class RemoveLower extends Command{
     public String getHelp() {
         return "удалить из коллекции все элементы, меньшие, чем заданный";
     }
+    public boolean isNeedArguments() {
+        return needArguments;
+    }
 }

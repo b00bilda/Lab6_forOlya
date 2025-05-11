@@ -13,6 +13,9 @@ public class UpdateId extends Command{
     public UpdateId() {
         super("update_id");
     }
+    public boolean isNeedArguments() {
+        return needArguments;
+    }
     private boolean needArguments = true;
     String[] args;
     @Override

@@ -7,6 +7,7 @@ public class RemoveFirst extends Command {
     public RemoveFirst() {
         super("remove first");
     }
+    public boolean needArguments = false;
     @Override
     public void execute(Request request) throws IllegalAccessException {
         priorityQueue.poll();
@@ -16,5 +17,8 @@ public class RemoveFirst extends Command {
     @Override
     public String getHelp() {
         return "удалить первый элемент из коллекции";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

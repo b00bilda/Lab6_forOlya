@@ -8,7 +8,7 @@ import java.util.Scanner;
 import static org.example.system.CollectionManager.removeByID;
 
 public class RemoveById extends Command {
-    private boolean needArguments = true;
+    public boolean needArguments = true;
     String[] args;
 
     public RemoveById() {
@@ -32,5 +32,8 @@ public class RemoveById extends Command {
     @Override
     public String getHelp() {
         return " удалить элемент из коллекции по его id";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

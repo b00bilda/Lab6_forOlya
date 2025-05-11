@@ -9,6 +9,7 @@ public class Clear extends Command {
     public Clear() {
         super("clear");
     }
+    public boolean needArguments = false;
     @Override
     public void execute(Request request) throws IllegalAccessException {
         priorityQueue.clear();
@@ -18,5 +19,8 @@ public class Clear extends Command {
     @Override
     public String getHelp() {
         return "очистить коллекцию";
+    }
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 }

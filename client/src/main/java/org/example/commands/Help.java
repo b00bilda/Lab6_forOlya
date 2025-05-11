@@ -15,10 +15,14 @@ public class Help extends Command {
             System.out.println(key + ": " + command.getHelp());
         });
     }
-
+    public boolean needArguments = false;
     @Override
     public String getHelp() {
         return "выводит справку по доступным командам";
+    }
+
+    public boolean isNeedArguments() {
+        return needArguments;
     }
 
    /* public static void register(HashMap<String,Command> stringCommandHashMap) {

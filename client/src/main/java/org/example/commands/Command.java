@@ -4,7 +4,7 @@ import org.example.system.Request;
 
 public abstract class Command {
     private final String name;
-    private boolean needArguments = false;
+    public boolean needArguments = false;
 
     protected Command(String name) {
         this.name = name;

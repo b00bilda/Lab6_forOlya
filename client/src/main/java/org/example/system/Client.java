@@ -54,18 +54,27 @@ public class Client {
         //List<LabWork> labWorks = manager.getDataCollectionLabWork();
 
         while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            String[] commandLine = line.split(" ");
-            String commandName = commandLine[0];
+            System.out.println("зашел в цикл строка 57");
+            /*String line = scanner.nextLine();
+            String[] commandLine = line.split(" ");*/
+            String commandName = scanner.nextLine();
             // String[] arguments = Arrays.copyOfRange(commandLine, 1, commandLine.length);
             Command command = commandManager.getCommandList().get(commandName);
             Request request = null;
 
             if (!command.isNeedArguments()) {
+                System.out.println("non need arguments");
                 request = new Request(commandName, labWork, null);
-            } else {
                 try {
                     command.execute(request);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("need argument");
+                try {
+                    command.execute(request);
+
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
